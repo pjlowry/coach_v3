@@ -1,0 +1,73 @@
+<%- model_class = Profile -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => "Coach #{@profile.first_name}'s Profile" %></h1>
+</div><br><br>
+
+<div class="row">
+  <div class="span2 pull-left">   
+ <%= image_tag @profile.picture_url(:small) %><br>
+  </div>
+  
+
+<div class="span7 pull-left">
+  <ul class="unstyled">
+    <li><strong>Coach</strong> <%= @profile.first_name %> <%= @profile.last_name[0] %>.</li>
+    <li><strong>Sport:</strong> <%= @profile.sport %></li>
+    <li><strong>City, State</strong> <%= @profile.city %>, <%= @profile.state %></li>
+    <li><strong>Zip Code:</strong> <%= @profile.zip_code %></li>
+    <li><strong>Email:</strong> 
+      <% if user_signed_in? %><%= mail_to @profile.contact_email, "Email me", :encode => "javascript", :subject => "Coachatlas contact request!" %>
+      <% else %>
+      <%= link_to "Sign in to get contact information", root_path %>
+      <% end %>
+
+    <li><br><strong>Bio:</strong> <%= @profile.bio %></li>
+    <li><br><strong>Coaching Experience:</strong> <%= @profile.coaching_experience %></li>
+    <li><br><strong>Playing Experience:</strong> <%= @profile.playing_experience %></li>
+
+
+  </ul>
+</div>
+
+<div class="span3 pull-right">
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12&center=#{@profile.city},#{@profile.state}&&markers=color:red%7Clabel:%7C#{@profile.latitude},#{@profile.longitude}" %><br>
+</div>
+
+
+
+
+</div><br>
+<div class="divider divider10"></div>
+<div class="span10 pull-left">
+  <h2>Similar coaches</h2>
+    <% for profile in @profile.nearbys.first(3) %>
+    <% if profile.nil? %>
+    <h3>Sorry we couldn't find any coaches nearby</h3>
+    <% else %>
+    <div class="span2">
+      <a href='/profiles/<%= profile.id %>'>
+      <%= image_tag profile.picture.url(:small) %><br>
+      <%= link_to "Coach: #{profile.first_name}", profile %><br></a> (<%= profile.distance.to_f.round(2) %> miles away) <br>
+      Sport: <%= profile.sport %>
+    </div><br>
+    <% end %>  
+    <% end %>
+</div>
+</div>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              profiles_path, :class => 'btn'  %>
+  <% if can? :update, @profile %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_profile_path(@profile), :class => 'btn' %>
+  <% end %>
+  <% if can? :destroy, @profile %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              profile_path(@profile),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+  <% end %>
+
+</div>

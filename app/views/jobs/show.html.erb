@@ -1,0 +1,41 @@
+<%- model_class = Job -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %> - <%= @job.job_title %></h1></div><br><br>
+<div class="row">
+<div class="span3 pull-left">
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}" %><br>
+</div>
+<div class="span9">
+  <ul class="unstyled">
+    <li><strong>City & State</strong> <%= @job.job_city %>, <%= @job.job_state %></li>
+    <li><strong>Zip Code:</strong> <%= @job.job_zip_code %></li>
+    <li><strong>Contact's Email:</strong> 
+      <% if user_signed_in? %><%= mail_to @job.job_email, "Email me", :encode => "javascript", :subject => "Coachatlas job posting!" %>
+      <% else %>
+        <%= link_to "Sign in to get contact information", root_path %>
+      <% end %>
+
+    <li><strong>Gender Preferred:</strong> <%= @job.job_gender %></li>
+    <li><br><strong>Job Description:</strong> <%= @job.job_description %></li>
+
+  </ul>
+</div>
+</div>
+</div>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              jobs_path, :class => 'btn'  %>
+  <% if can? :update, @job %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_job_path(@job), :class => 'btn' %>
+  <% end %>
+  <% if can? :destroy, @job %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              job_path(@job),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+  <% end %>
+
+</div>

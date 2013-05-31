@@ -1,0 +1,17 @@
+CoachAtlas Version 2.0
+
+This app is being created to help connect sports coaches to players, teams and organizations that are looking for better coaches. The app utilizes geo location as well as searching by sport for coaches either by posting a job via our jobs page or by searching our coach profiles for a coach that meets your specific needs.
+
+The styling is semi-custom twitter bootstrap utilizing responsive html/css3. 
+
+Coachatlas is built with:
+-Ruby on Rails
+-PostgreSQL
+-jQuery
+-JavaScript
+-Ruby
+-HTML5/CSS3
+
+CoachAtlas also utilizes agile development, TDD(kinda) and OOD.
+
+This app was built by Peter Lowry (@peterlowry).

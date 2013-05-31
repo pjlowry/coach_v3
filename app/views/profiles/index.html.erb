@@ -1,0 +1,99 @@
+<%- model_class = Profile -%>
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <h1>Coach Profiles</h1>
+                <span class="pg-title-sub">Find a coach today! </span><br>
+            </div>
+            <div class="span3 pull-right" style="padding-top: 30px;">
+              <h3 class="header_line" style="text-align:center"><span>Coaches create an account here » <br><a href="/profiles/new">Coach Sign Up</a></h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+<div class="container">
+  <div class="row">
+    <div class="span3">
+      <aside class="left">
+          <div class="sidebar-widget">
+              <div class="divider divider10"><span>Search Menu</span></div>
+              <ul class="sidebar-menu sidebar-menu-arrow">
+                  Search by Sport
+                    <%= form_tag profiles_path, :class => 'form-horizontal', method: :get do %>
+                     <p>
+                       <%= text_field_tag :query, params[:query], :placeholder => 'Enter sport ...', :autocomplete => 'on', :type => 'text', :class=> 'input-small' %>
+
+                     </p>
+                  Search by Location
+                   
+                     <p>
+                       <%= text_field_tag :search, params[:search], :placeholder => 'Enter zip code ...', :autocomplete => 'on', :type => 'text', :class=> 'input-small' %>
+
+                     </p>
+                    Search by Distance from Location
+                      
+                       <p>
+                         <%= text_field_tag :distance_search, params[:distance_search], :placeholder => '50 miles ...', :autocomplete => 'on', :type => 'text', :class=> 'input-small' %><br><br>
+
+                         <%= submit_tag "Search", name: nil, :class => 'btn btn-primary' %>
+                       </p>
+                      <% end %>
+              </ul>
+          </div>                    
+      </aside><br>
+
+      <aside class="left">
+          <div class="sidebar-widget">
+              <div class="divider divider10"><span>All Sports</span></div>
+              <ul class="sidebar-menu sidebar-menu-arrow">
+                
+                <!-- LIST ALL SPORTS -->
+                <li><%= Profile.list_sports %>
+                </li>
+              </ul>
+          </div>                    
+      </aside>
+
+    </div>
+<!--   </div>
+</div>
+</section><br><br>
+
+<section>
+  <div class="container">
+    <div class="row">
+
+<div class="divider divider10"><span>Coaches</span></div>
+
+ -->
+    <div class="span9 pull-right">
+      <ul class="thumbnails">
+        <% @profiles.each do |profile| %>
+        <a href="/profiles/<%= profile.id %>">
+        <li class="span9">
+          <h3 style="color:#ff6c00;"><strong>Coach <%= profile.first_name %></strong><br><br>
+            <div class="span1" alt="Coach Photo" style="visibility: visible; opacity: 1;"><img src=<%= profile.picture.url(:small) %>></div>
+            <div class="span6 pull-left">
+            Sport: <%= profile.sport %><br>
+        </a>
+          <p style="color:black;">
+            <%= profile.city %>, <%= profile.state %><br>
+            Bio: <%= profile.bio[0..100] %>...
+          </p>
+        <div class="divider divider7"></div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+<!--       will paginate
+ -->      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<div class="divider divider10"></div>       

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CoachAtlas </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find your perfect sports coach today!">
+  <meta name="author" content="CoachAtlas">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <script src="js/jquery-1.10.0.js"></script>
+  <script src="js/scripts.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="hidden-desktop logo" style="font-size:24px;padding-top:10px; padding-left:5px;"><a href="/"><img src="/images/coachatlas_logo.jpg" class="img-rounded" height="50" width="250" alt="Home"></a></div>
+
+        <div class="nav-collapse collapse">
+          <div class="nav pull-left">
+            <div class="logo-image">
+              <div class="hidden-tablet">
+                <div class="hidden-phone">
+              <a href="/"><img src="/images/coachatlas_logo.jpg" class="img-rounded" alt="Home"></a></div></div>
+            </div>
+          </div>
+          <ul class="nav pull-right">
+            <li><a href="/profiles"><span class="current"></span> COACHES</a></li>
+            <li><a href="/jobs"><span class="current"></span> JOBS</a></li>
+            <li><a href="/camps"><span class="current"></span> CAMPS</a></li>
+            <li><a href="/howitworks"><span class="current"></span> HOW IT WORKS</a></li>
+              <% if user_signed_in? %>
+                <li class='dropdown'>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"> MY ACCOUNT <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <% if current_user.profile.nil? %>
+                      <li><%= link_to 'Create a profile', new_profile_path(current_user) %></li>
+                    <% else %>
+                      <li><%= link_to 'View my coach profile', profile_path(current_user.profile.id) %></li>
+                    <% end %>
+                    <li><%= link_to 'Post a job', new_job_path(current_user) %>
+                    
+                    <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+                    <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
+                  </ul>
+                </li>
+              <% else %>
+                <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                <li><%= link_to 'Sign in', new_user_session_path %></li>
+              <% end %>
+            </ul>                
+      <!--/.nav-collapse --> 
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+
+<%= render :partial => 'layouts/flash', :locals => {:flash => flash} %>
+
+<div class="container">
+<%= yield %>
+</div>
+
+<footer>
+    <div class="container footer">
+        <div class="row">
+            <div class="span3">
+              <h3>Coachatlas</h3>
+              <h3 style="font-size:15px;"><a href="/howitworks">  Home</a></h3>
+              <h3 style="font-size:15px;"><a href="/profiles">  Coaches</a></h3>
+              <h3 style="font-size:15px;"><a href="/jobs">  Jobs</a></h3>
+              <h3 style="font-size:15px;"><a href="/camps">  Camps</a></h3>
+              <h3 style="font-size:15px;"><a href="/howitworks">  How it Works</a></h3>
+              <h3 style="font-size:15px;"><a href="/blog">  Blog</a></h3>
+              <h3 style="font-size:15px;"><a href="/about">  About Us</a></h3>
+            </div>
+            <div class="span3">
+                <div class="sidebar-widget">
+                    <h3>Recent Blog Entries</h3>
+                    <div class="popular-posts">
+                        <a href="#" class="thumbnail thumbnail-left-small thumbnail-small">
+                            <img alt="" src="/images/timbers.jpg" style="height:40px; width:40px;" class="grayscale">
+                        </a>
+                        <h4><a href="/blog">Why We Built CoachAtlas</a></h4>
+                        <small>July 18st, 2013</small>
+                    </div>
+                    <div class="popular-posts">
+                        <a href="#" class="thumbnail thumbnail-left-small thumbnail-small">
+                            <img alt="" src="/images/160x160_sphereman_name.jpg" style="height:40px; width:40px;" class="grayscale">
+                        </a>
+                        <h4><a href="/blog">We are live!</a></h4>
+                        <small>July 1st, 2013</small>
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="sidebar-widget">
+                    <h3>Contact Info</h3>
+                    <address class="place">
+                        CoachAtlas<br>
+                        9385 Tarmac Way<br>
+                        Fair Oaks, CA 95628
+                    </address>
+                    <address class="phone">
+                        (312)450-4610<br>
+                    </address>
+                    <address class="mail">
+                        <a href="mailto:first.last@gmail.com">support@coachatlas.com</a>
+                    </address>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="sidebar-widget">
+                    <h3>Recent Tweets</h3>
+                    <div class="widget-tweet">
+                        Tweets by <a class="twitter-timeline" href="https://twitter.com/coachatlas_com" data-widget-id="widget-tweet">@coachatlas_com</a>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /row -->
+    </div> <!-- /container -->
+    <div class="copy">
+        <div class="container">
+            <div class="pull-left">
+                <ul class="horizontal-image-menu">
+                    <li><a href="http://www.facebook.com/pages/CoachAtlascom/398372406847393?ref=hl"><img src="/images/facebook.png" alt=""></a></li>
+                    <li><a href="https://twitter.com/coachatlas_com"><img src="/images/twitter.png" alt=""></a></li>               
+                </ul>
+            </div>
+            <div class="pull-right" style="color:white">Copyright © CoachAtlas 2012. All Rights Reserved.</div>
+        </div>
+    </div>
+</footer>
+
+
+</body>
+</html>

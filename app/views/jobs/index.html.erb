@@ -1,0 +1,83 @@
+<%- model_class = Job -%>
+<section class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="span9">
+                <h1>Coaching Jobs</h1>
+                <span class="pg-title-sub">Find a job that fits you </span><br>
+                
+
+            </div>
+            <div class="span3 pull-right" style="padding-top: 30px;">
+              <h3 class="header_line" style="text-align:center"><span>Post A New Job »<br> <a href="/jobs/new">New Job Posting</a></h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="span3">
+        <aside class="left">
+            <div class="sidebar-widget">
+              <div class="divider divider10"><span>Search Menu</span></div>
+                <ul class="sidebar-menu sidebar-menu-arrow">
+                  Search Jobs by Sport
+                    <%= form_tag jobs_path, :class => 'form-horizontal', method: :get do %>
+                     <p>
+                       <%= text_field_tag :job_query, params[:job_query], :placeholder => 'Enter sport ...', :autocomplete => 'on', :type => 'text', :class=> 'input-small' %>
+
+                     </p>
+                  Search Jobs by Location
+                   
+                     <p>
+                       <%= text_field_tag :job_search, params[:job_search], :placeholder => 'Enter zip code ...', :autocomplete => 'on', :type => 'text', :class=> 'input-small' %>
+
+                     </p>
+                    Search Jobs by Distance from Location
+                      
+                       <p>
+                         <%= text_field_tag :job_distance_search, params[:job_distance_search], :placeholder => '50 miles ...', :autocomplete => 'on', :type => 'text', :class=> 'input-small' %><br><br>
+
+                         <%= submit_tag "Search", name: nil, :class => 'btn btn-primary' %>
+                       </p>
+                      <% end %>
+                    
+                </ul>
+            </div>                    
+        </aside>
+      </div>
+
+      <div class="span9">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th><%= model_class.human_attribute_name(:posted_on) %></th>
+              <th><%= model_class.human_attribute_name(:job_title) %></th>
+              <th><%= model_class.human_attribute_name(:sport) %></th>
+              <th><%= model_class.human_attribute_name(:gender) %></th>
+              <th><%= model_class.human_attribute_name(:location) %></th>
+              <th><%= model_class.human_attribute_name(:description) %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @jobs.each do |job| %>
+              <tr>
+                <td><%= job.created_at.localtime.strftime("%x") %></td>
+                <td><a href="/jobs/<%= job.id %>"><%= job.job_title %></a></td>
+                <td><%= job.job_sport %></td>
+                <td><%= job.job_gender %></td>
+                <td><%= job.job_city %>, <%= job.job_state %> <%= job.job_zip_code %></td>
+                <td><a href="/jobs/<%= job.id %>"><%= job.job_description[0..50] %> ...</a></td>
+              </tr></a>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <div>
+  </div>
+</section>
+
+
+

@@ -1,0 +1,50 @@
+<div class="container">
+  <% if user_signed_in? %>
+    <div class="row">
+      <div class="span12">
+        <h2 class="header_line" style="text-align:center"><span>Coaches create an account here » <a href="/profiles/new">Coach Sign Up</a></h2>
+      </div>
+    </div>
+    <section class="mega-blockquote container">
+        <div class="mega-blockquote-title">CoachAtlas</div>
+        <p class="mega-blockquote-text">The best place to find sports coaches for your team, player or organization</p>
+                  <p>
+                    <%= form_tag profiles_path, :class => 'form-horizontal', method: :get do %>
+                     
+                       <%= text_field_tag :query, params[:query], :placeholder => 'Enter sport ...', :autocomplete => 'on', :type => 'text', :class=> 'input-medium' %>
+
+                     
+                       <%= text_field_tag :search, params[:search], :placeholder => 'Enter zip code ...', :autocomplete => 'on', :type => 'text', :class=> 'input-medium' %><br><br>
+
+                       <%= submit_tag "Search", name: nil, :class => 'btn btn-primary' %>
+
+
+                    </p>
+                      <% end %>
+    </section>
+  <% else %>
+  <div class="row">
+    <div class="span12">
+      <h2 class="header_line" style="text-align:center"><span>Coaches create an account here » <a href="/users/sign_up">Coach Sign Up</a></h2>
+    </div>
+  </div>
+      <section class="mega-blockquote container">
+          <div class="mega-blockquote-title">CoachAtlas</div>
+          <p class="mega-blockquote-text">The best place to find sports coaches for your team, player or organization</p>
+                    <p>
+                      <%= form_tag profiles_path, :class => 'form-horizontal', method: :get do %>
+                       
+                         <%= text_field_tag :query, params[:query], :placeholder => 'Enter sport ...', :autocomplete => 'on', :type => 'text', :class=> 'input-medium' %>
+
+                       
+                         <%= text_field_tag :search, params[:search], :placeholder => 'Enter zip code ...', :autocomplete => 'on', :type => 'text', :class=> 'input-medium' %><br><br>
+
+                         <%= submit_tag "Search", name: nil, :class => 'btn btn-primary' %>
+
+
+                      </p>
+                        <% end %>
+      </section>
+
+  <% end %>
+</div>
