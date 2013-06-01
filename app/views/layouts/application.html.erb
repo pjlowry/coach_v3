@@ -9,8 +9,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 
-  <script src="js/jquery-1.10.0.js"></script>
-  <script src="js/scripts.js"></script>
+
 </head>
 
 <body>
@@ -43,7 +42,7 @@
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#"> MY ACCOUNT <span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     <% if current_user.profile.nil? %>
-                      <li><%= link_to 'Create a profile', new_profile_path(current_user) %></li>
+                      <li><%= link_to 'Create a coach profile', new_profile_path(current_user) %></li>
                     <% else %>
                       <li><%= link_to 'View my coach profile', profile_path(current_user.profile.id) %></li>
                     <% end %>

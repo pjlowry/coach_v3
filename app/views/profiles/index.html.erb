@@ -51,7 +51,7 @@
               <ul class="sidebar-menu sidebar-menu-arrow">
                 
                 <!-- LIST ALL SPORTS -->
-                <li><%= Profile.list_sports %>
+                <li>
                 </li>
               </ul>
           </div>                    
@@ -78,10 +78,9 @@
             <div class="span1" alt="Coach Photo" style="visibility: visible; opacity: 1;"><img src=<%= profile.picture.url(:small) %>></div>
             <div class="span6 pull-left">
             Sport: <%= profile.sport %><br>
-        </a>
           <p style="color:black;">
-            <%= profile.city %>, <%= profile.state %><br>
-            Bio: <%= profile.bio[0..100] %>...
+            <%= profile.city %>, <%= profile.state %></p>
+          <p> Bio: <%= profile.bio[0..100] %>...
           </p>
         <div class="divider divider7"></div>
           </div>
