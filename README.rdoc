@@ -1,4 +1,4 @@
-CoachAtlas Version 2.0
+CoachAtlas Version 3.0
 
 This app is being created to help connect sports coaches to players, teams and organizations that are looking for better coaches. The app utilizes geo location as well as searching by sport for coaches either by posting a job via our jobs page or by searching our coach profiles for a coach that meets your specific needs.
 

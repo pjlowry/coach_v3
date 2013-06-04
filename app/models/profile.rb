@@ -47,8 +47,8 @@ class Profile < ActiveRecord::Base
     end
   end
 
-  def self.list_sports
-    Profile.select(:sport).map(&:sport).uniq.sort
-  end
+  # def self.list_sports
+  #   Profile.select(:sport).map(&:sport).uniq.sort
+  # end
 
 end
