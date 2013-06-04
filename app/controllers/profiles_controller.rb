@@ -25,14 +25,13 @@ class ProfilesController < ApplicationController
       @profiles = Profile.text_search(params[:query]) && Profile.near(params[:search], 50, :order => :distance)
     elsif params[:query].present? && params[:distance_search].present?
       render :index
-      flash[:alert] = "Please enter a valid address or zip code"
     elsif params[:distance_search].present?
       @profiles = Profile.near((request.ip), params[:distance_search], :order => :distance)
     elsif params[:query].present?
       @profiles = Profile.text_search(params[:query])
     elsif params[:search].present?
       @profiles = Profile.near(params[:search], 50, :order => :distance)
-    elsif
+    else
       @profiles = Profile.all 
     end
   end

@@ -20,7 +20,7 @@
       <% else %>
       <%= link_to "Sign in to get contact information", root_path %>
       <% end %>
-
+    <li><strong>Member Since:</strong> <%= @profile.created_at.localtime.strftime("%x")%>
     <li><br><strong>Bio:</strong> <%= @profile.bio %></li>
     <li><br><strong>Coaching Experience:</strong> <%= @profile.coaching_experience %></li>
     <li><br><strong>Playing Experience:</strong> <%= @profile.playing_experience %></li>

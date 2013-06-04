@@ -1,7 +1,7 @@
 class Profile < ActiveRecord::Base
 
   validates :first_name, :last_name, :city, :state, :street, :gender, :sport, :zip_code, :bio, :user_id, :contact_email, :coaching_experience, :playing_experience, :presence => true
-  attr_accessible :first_name, :last_name, :name, :picture, :city, :state, :street, :gender, :sport, :zip_code, :bio, :coaching_experience, :playing_experience, :user_id, :contact_email, :address, :longitude, :latitude
+  attr_accessible :first_name, :last_name, :name, :picture, :city, :state, :street, :gender, :sport, :zip_code, :bio, :coaching_experience, :playing_experience, :user_id, :created_at, :contact_email, :address, :longitude, :latitude
   
   mount_uploader :picture, PictureUploader
 
@@ -37,6 +37,8 @@ class Profile < ActiveRecord::Base
 
   def self.text_search(query)
     if query.present?
+      query = query.downcase
+
       # search(query)
       rank = <<-RANK
         ts_rank(to_tsvector(sport), plainto_tsquery(#{sanitize(query)}))

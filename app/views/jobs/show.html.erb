@@ -7,6 +7,7 @@
 </div>
 <div class="span9">
   <ul class="unstyled">
+    <li><strong>Posted On:</strong> <%= @job.updated_at.localtime.strftime("%x") %>
     <li><strong>City & State</strong> <%= @job.job_city %>, <%= @job.job_state %></li>
     <li><strong>Zip Code:</strong> <%= @job.job_zip_code %></li>
     <li><strong>Contact's Email:</strong> 
@@ -14,7 +15,6 @@
       <% else %>
         <%= link_to "Sign in to get contact information", root_path %>
       <% end %>
-
     <li><strong>Gender Preferred:</strong> <%= @job.job_gender %></li>
     <li><br><strong>Job Description:</strong> <%= @job.job_description %></li>
 

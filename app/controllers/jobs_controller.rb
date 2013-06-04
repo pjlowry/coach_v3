@@ -19,14 +19,17 @@ class JobsController < ApplicationController
 
   def index
     if params[:job_query].present? && params[:job_search].present? && params[:job_distance_search].present?
-      @jobs = Job.text_search(params[:job_query]) && Job.near(params[:job_search], params[:job_distance_search], :order => :distance)
-    elsif params[:job_query].present? && params[:job_search].present?
-      @jobs = Job.text_search(params[:job_query]) && Job.near(params[:job_search], 50, :order => :distance)
+      @jobs = Job.text_search(params[:job_query]) 
+      @jobs = Job.near(params[:job_search], params[:job_distance_search], :order => :distance)
+    elsif params[:job_query].present? && params[:job_search].present? 
+      @jobs = Job.text_search(params[:job_query]) 
+      @jobs = Job.near(params[:job_search], 50, :order => :distance)
     elsif params[:job_query].present? && params[:job_distance_search].present?
       render :index
-      flash[:alert] = "Please enter a valid address or zip code"
+      flash[:alert] = "Please enter a valid address or zip code to search for jobs."
     elsif params[:job_distance_search].present?
-      @jobs = Job.near((request.ip), params[:job_distance_search], :order => :distance)
+      render :index
+      flash[:alert] = "Please enter a valid address or zip code to search for jobs." 
     elsif params[:job_query].present?
       @jobs = Job.text_search(params[:job_query])
     elsif params[:job_search].present?
@@ -62,4 +65,5 @@ class JobsController < ApplicationController
     flash[:notice] = "Your job was successfully deleted."
     redirect_to root_path
   end
+
 end
