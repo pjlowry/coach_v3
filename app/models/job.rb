@@ -37,7 +37,7 @@ class Job < ActiveRecord::Base
       rank = <<-RANK
         ts_rank(to_tsvector(job_sport), plainto_tsquery(#{sanitize(job_query)}))
       RANK
-    where("to_tsvector('english', job_sport) @@ :q", q: job_query.gsub(" ", " | ")).order("#{rank} DESC")
+    where("to_tsvector('english', job_sport) @@ :q", q: job_query.gsub(" ", " | ")).order("#{rank} ASC")
     else
       scoped
     end

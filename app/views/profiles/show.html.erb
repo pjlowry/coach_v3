@@ -6,6 +6,8 @@
 <div class="row">
   <div class="span2 pull-left">
     <%= image_tag @profile.picture_url %><br>
+    <h4 style="text-align:center;">Member Since: <%= @profile.created_at.localtime.strftime("%x")%></h4 style="text-align:center;"><br>
+
   </div>
   
 
@@ -21,7 +23,6 @@
         <ul class="unstyled">
           <h3>
           <li>Coach: <%= @profile.first_name %> <%= @profile.last_name[0] %>.</li><br>
-          <li>Member Since: <%= @profile.created_at.localtime.strftime("%x")%></li><br>
           <li>Sport: <%= @profile.sport %></li><br>
           <li>Zip Code: <%= @profile.zip_code %></li><br>
           <li>Email: 
@@ -34,13 +35,16 @@
       </div>
       <div class="tab-pane" id="tab2">
         <ul class="unstyled">
-          <li><br><strong>Bio:</strong> <%= @profile.bio %></li>
-        </ul>
+          <h3>
+          <li>Bio:</h3><h4> <%= @profile.bio %></li>
+        </ul></h4>
       </div>
       <div class="tab-pane" id="tab3">
         <ul class="unstyled">
-          <li><br><strong>Coaching Experience:</strong> <%= @profile.coaching_experience %></li>
-          <li><br><strong>Playing Experience:</strong> <%= @profile.playing_experience %></li>
+          <h3>
+          <li>Coaching Experience:</h3><h4> <%= @profile.coaching_experience %></li><br>
+          <h3><li>Playing Experience:</h3><h4> <%= @profile.playing_experience %></li>
+          </h4> 
         </ul>
       </div>
     </div>
