@@ -20,9 +20,9 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:query].present? && params[:search].present? && params[:distance_search].present? 
-      @profiles = Profile.text_search(params[:query]) && Profile.near(params[:search], params[:distance_search], :order => :distance)
+      @profiles = Profile.text_search(params[:query]).near(params[:search], params[:distance_search], :order => :distance)
     elsif params[:query].present? && params[:search].present?
-      @profiles = Profile.text_search(params[:query]) && Profile.near(params[:search], 50, :order => :distance)
+      @profiles = Profile.text_search(params[:query]).near(params[:search], 50, :order => :distance)
     elsif params[:query].present? && params[:distance_search].present?
       @profiles = Profile.text_search(params[:query])
     elsif params[:search].present? && params[:distance_search].present?
@@ -35,6 +35,10 @@ class ProfilesController < ApplicationController
       @profiles = Profile.near(params[:search], 50, :order => :distance)
     else
       @profiles = Profile.all 
+    end
+    if @profiles.count == 0
+      flash[:alert] = "Sorry we couldn't find any coaches for you."
+      @profiles = Profile.all
     end
   end
   

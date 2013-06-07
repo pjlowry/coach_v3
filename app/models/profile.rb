@@ -43,7 +43,7 @@ class Profile < ActiveRecord::Base
       rank = <<-RANK
         ts_rank(to_tsvector(sport), plainto_tsquery(#{sanitize(query)}))
       RANK
-    where("to_tsvector('english', sport) @@ :q", q: query).order("#{rank} DESC")
+    where("to_tsvector('english', sport) @@ :q", q: query).order("#{rank} ASC")
     else
       scoped
     end
