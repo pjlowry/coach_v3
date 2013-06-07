@@ -5,23 +5,37 @@
 <div class="span3 pull-left">
   <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@job.latitude}%2C#{@job.longitude}" %><br>
 </div>
-<div class="span9">
-  <ul class="unstyled">
-    <li><strong>Posted On:</strong> <%= @job.updated_at.localtime.strftime("%x") %>
-    <li><strong>City & State</strong> <%= @job.job_city %>, <%= @job.job_state %></li>
-    <li><strong>Zip Code:</strong> <%= @job.job_zip_code %></li>
-    <li><strong>Contact's Email:</strong> 
-      <% if user_signed_in? %><%= mail_to @job.job_email, "Email me", :encode => "javascript", :subject => "Coachatlas job posting!" %>
-      <% else %>
-        <%= link_to "Sign in to get contact information", root_path %>
-      <% end %>
-    <li><strong>Gender Preferred:</strong> <%= @job.job_gender %></li>
-    <li><br><strong>Job Description:</strong> <%= @job.job_description %></li>
 
-  </ul>
+<div class="span9">
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Contact Info</a></li>
+      <li><a href="#tab2" data-toggle="tab">Job Description</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        <ul class="unstyled">
+          <li><strong>Posted On:</strong> <%= @job.updated_at.localtime.strftime("%x") %>
+          <li><strong>City & State</strong> <%= @job.job_city %>, <%= @job.job_state %></li>
+          <li><strong>Zip Code:</strong> <%= @job.job_zip_code %></li>
+          <li><strong>Contact's Email:</strong> 
+            <% if user_signed_in? %><%= mail_to @job.job_email, "Email me", :encode => "javascript", :subject => "Coachatlas job posting!" %>
+            <% else %>
+              <%= link_to "Sign in to get contact information", root_path %>
+            <% end %>
+          <li><strong>Gender Preferred:</strong> <%= @job.job_gender %></li>
+        </ul>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <ul class="unstyled">
+          <li><br><strong>Job Description:</strong> <%= @job.job_description %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
-</div>
+
 
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),

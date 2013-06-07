@@ -19,12 +19,14 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    if params[:query].present? && params[:search].present? && params[:distance_search].present?
+    if params[:query].present? && params[:search].present? && params[:distance_search].present? 
       @profiles = Profile.text_search(params[:query]) && Profile.near(params[:search], params[:distance_search], :order => :distance)
     elsif params[:query].present? && params[:search].present?
       @profiles = Profile.text_search(params[:query]) && Profile.near(params[:search], 50, :order => :distance)
     elsif params[:query].present? && params[:distance_search].present?
-      render :index
+      @profiles = Profile.text_search(params[:query])
+    elsif params[:search].present? && params[:distance_search].present?
+      @profiles= Profile.near(params[:search], params[:distance_search], :order => :distance)
     elsif params[:distance_search].present?
       @profiles = Profile.near((request.ip), params[:distance_search], :order => :distance)
     elsif params[:query].present?
