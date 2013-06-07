@@ -1,0 +1,11 @@
+
+<a href="/profiles/<%= profile.id %>">
+  <div class="span1 pull-right">
+    <%= image_tag profile.picture %>
+  </div>
+
+  <h2>Coach <%= profile.first_name %> <%= profile.last_name[0] %>.</h2>
+  </a>
+  <h3>Sport: <%= profile.sport %></h3>
+  <h3>City: <%= profile.city %>, <%= profile.state %></h3>
+  <h4>Bio: <%= profile.bio[0..20] %>...</h4>

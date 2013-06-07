@@ -40,6 +40,13 @@ class ProfilesController < ApplicationController
       flash[:alert] = "Sorry we couldn't find any coaches for you."
       @profiles = Profile.all
     end
+    @json = @profiles.to_gmaps4rails do |profile, marker|
+     marker.infowindow render_to_string(:partial => "/profiles/infowindow", :locals => {:profile => profile})
+       marker.title "Coach #{profile.first_name} #{profile.last_name[0]}" 
+       marker.picture({:picture => "/images/gmap-image.png", :width => 32,
+                    :height => 32})  
+     end
+
   end
   
 

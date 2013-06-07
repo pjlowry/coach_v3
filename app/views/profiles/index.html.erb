@@ -70,6 +70,14 @@
 
  -->
     <div class="span9 pull-right">
+      <!-- google map -->
+        
+          <%= gmaps4rails(@json) %>
+        
+    <br>
+
+
+
       <ul class="thumbnails">
         <% @profiles.each do |profile| %>
         <a href="/profiles/<%= profile.id %>">

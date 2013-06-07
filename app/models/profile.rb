@@ -1,5 +1,7 @@
 class Profile < ActiveRecord::Base
 
+  acts_as_gmappable
+
   validates :first_name, :last_name, :city, :state, :street, :gender, :sport, :zip_code, :bio, :user_id, :contact_email, :coaching_experience, :playing_experience, :presence => true
   attr_accessible :first_name, :last_name, :name, :picture, :city, :state, :street, :gender, :sport, :zip_code, :bio, :coaching_experience, :playing_experience, :user_id, :created_at, :contact_email, :address, :longitude, :latitude
   
@@ -47,6 +49,10 @@ class Profile < ActiveRecord::Base
     else
       scoped
     end
+  end
+
+  def gmaps4rails_address
+    "#{profile.first_name}, #{profile.sport}, #{profile.picture}, #{profile.street}, #{profile.city}, #{profile.state}, #{profile.zip_code}"
   end
 
   # def self.list_sports

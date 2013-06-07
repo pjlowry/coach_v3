@@ -77,6 +77,7 @@ GEM
       thor (>= 0.13.6)
     formatador (0.2.4)
     geocoder (1.1.8)
+    gmaps4rails (1.5.6)
     hike (1.2.2)
     i18n (0.6.1)
     journey (1.0.4)
@@ -179,6 +180,7 @@ DEPENDENCIES
   fog
   foreman
   geocoder
+  gmaps4rails
   jquery-rails
   mini_magick
   pg
