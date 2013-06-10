@@ -19,9 +19,9 @@ class JobsController < ApplicationController
 
   def index
     if params[:job_query].present? && params[:job_search].present? && params[:job_distance_search].present?
-      @jobs = Job.text_search(params[:job_query]).near(params[:job_search], params[:job_distance_search], :order => :distance)
+      @jobs = Job.text_search(params[:job_query]).near(params[:job_search], params[:job_distance_search], :order => :distance).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif params[:job_query].present? && params[:job_search].present? 
-      @jobs = Job.text_search(params[:job_query]).near(params[:job_search], 50, :order => :distance)
+      @jobs = Job.text_search(params[:job_query]).near(params[:job_search], 50, :order => :distance).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif params[:job_query].present? && params[:job_distance_search].present?
       render :index
       flash[:alert] = "Please enter a valid address or zip code to search for jobs."
@@ -29,15 +29,15 @@ class JobsController < ApplicationController
       render :index
       flash[:alert] = "Please enter a valid address or zip code to search for jobs." 
     elsif params[:job_query].present?
-      @jobs = Job.text_search(params[:job_query])
+      @jobs = Job.text_search(params[:job_query]).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif params[:job_search].present?
-      @jobs = Job.near(params[:job_search], 50, :order => :distance)
+      @jobs = Job.near(params[:job_search], 50, :order => :distance).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif
-      @jobs = Job.all
+      @jobs = Job.sorted(params[:sort], "created_at DESC").page(params[:page])
     end
     if @jobs.count == 0
       flash[:alert] = "Sorry we couldn't find any jobs that fit that description"
-      @jobs = Job.all
+      @jobs = Job.sorted(params[:sort], "created_at DESC").page(params[:page])
     end
   end
 

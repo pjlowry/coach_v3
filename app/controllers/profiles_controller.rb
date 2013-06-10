@@ -20,25 +20,26 @@ class ProfilesController < ApplicationController
 
   def index
     if params[:query].present? && params[:search].present? && params[:distance_search].present? 
-      @profiles = Profile.text_search(params[:query]).near(params[:search], params[:distance_search], :order => :distance)
+      @profiles = Profile.text_search(params[:query]).near(params[:search], params[:distance_search], :order => :distance).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif params[:query].present? && params[:search].present?
-      @profiles = Profile.text_search(params[:query]).near(params[:search], 50, :order => :distance)
+      @profiles = Profile.text_search(params[:query]).near(params[:search], 50, :order => :distance).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif params[:query].present? && params[:distance_search].present?
       @profiles = Profile.text_search(params[:query])
     elsif params[:search].present? && params[:distance_search].present?
-      @profiles= Profile.near(params[:search], params[:distance_search], :order => :distance)
+      @profiles= Profile.near(params[:search], params[:distance_search], :order => :distance).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif params[:distance_search].present?
-      @profiles = Profile.near((request.ip), params[:distance_search], :order => :distance)
+      @profiles = Profile.near((request.ip), params[:distance_search], :order => :distance).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif params[:query].present?
-      @profiles = Profile.text_search(params[:query])
+      @profiles = Profile.text_search(params[:query]).sorted(params[:sort], "created_at DESC").page(params[:page])
     elsif params[:search].present?
-      @profiles = Profile.near(params[:search], 50, :order => :distance)
+      @profiles = Profile.near(params[:search], 50, :order => :distance).sorted(params[:sort], "created_at DESC").page(params[:page])
     else
-      @profiles = Profile.all 
+      @profiles = Profile.sorted(params[:sort], "created_at DESC").page(params[:page]) 
     end
     if @profiles.count == 0
       flash[:alert] = "Sorry we couldn't find any coaches for you."
-      @profiles = Profile.all
+      @profiles = Profile.sorted(params[:sort], "created_at DESC").page(params[:page])
+
     end
     @json = @profiles.to_gmaps4rails do |profile, marker|
      marker.infowindow render_to_string(:partial => "/profiles/infowindow", :locals => {:profile => profile})
@@ -46,10 +47,8 @@ class ProfilesController < ApplicationController
        marker.picture({:picture => "/images/gmap-image.png", :width => 32,
                     :height => 32})  
      end
-
   end
   
-
   def show
     if params[:id].nil?
       flash[:alert] = "Sorry we couldn't find your profile"

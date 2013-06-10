@@ -16,7 +16,8 @@ gem "mini_magick"
 gem "fog"
 gem 'foreman'
 gem 'gmaps4rails'
-
+gem 'sorted', '~> 0.4.3'
+gem 'will_paginate', '~> 3.0'
 
 
 # Gems used only for assets and not required

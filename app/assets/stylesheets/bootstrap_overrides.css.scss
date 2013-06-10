@@ -2,7 +2,12 @@
 
 @import "bootstrap-responsive";
 
-
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+} 
 
 #flash_notice,
 #flash_error,
