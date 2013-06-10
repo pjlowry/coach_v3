@@ -1,10 +1,6 @@
-<img src="/images/x.jpg" draggable="false" style="position: absolute; width: 10px; height: 10px; right: 0px; top: 0px; z-index: 10000; -webkit-user-select: none; border: 0px; padding: 0px; margin: 0px;">
-<a href="/profiles/<%= profile.id %>">
-  <div style="height:60px; width:60px;padding-bottom:30px;">
-    <%= image_tag profile.picture %>
-  </div>
-
-  <h2>Coach <%= profile.first_name %> <%= profile.last_name[0] %>.</h2>
-  </a>
+<a href="/profiles/<%= profile.id %>"> <h2>Coach <%= profile.first_name %> <%= profile.last_name[0] %>.</h2>
+  
   <h3>Sport: <%= profile.sport %></h3>
   <h3>City: <%= profile.city %>, <%= profile.state %></h3>
+    <%= image_tag profile.picture %>
+  
