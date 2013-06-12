@@ -1,8 +1,8 @@
 class Job < ActiveRecord::Base
   include PgSearch
 
-  validates :job_title, :job_distance_search, :job_sport, :job_city, :job_state, :job_zip_code, :job_description, :job_email, :user_id, :presence => true
-  attr_accessible :job_title, :job_sport, :job_gender, :job_city, :job_state, :job_zip_code, :job_description, :job_email, :user_id, :job_address, :latitude, :longitude
+  validates :job_title, :job_sport, :job_city, :job_state, :job_zip_code, :job_description, :job_email, :user_id, :presence => true
+  attr_accessible :job_title, :job_sport, :job_distance_search, :job_gender, :job_city, :job_state, :job_zip_code, :job_description, :job_email, :user_id, :job_address, :latitude, :longitude
 
   GENDER = ["Male", "Female", "Male or Female"]
   STATE = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA",
@@ -22,10 +22,6 @@ class Job < ActiveRecord::Base
   before_validation do |job|
     job.job_sport = job_sport.titleize
   end
-
-  # scope :desc, order("jobs.created_at DESC")
-
-  # before_save :titlecase
 
   geocoded_by :job_address
   after_validation :geocode, :if => :job_address_changed?

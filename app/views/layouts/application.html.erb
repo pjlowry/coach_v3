@@ -44,7 +44,7 @@
                     <% else %>
                       <li><%= link_to 'View my coach profile', profile_path(current_user.profile.id) %></li>
                     <% end %>
-                    <li><%= link_to 'Post a job', new_job_path(current_user) %>
+                    <li><%= link_to 'Post a job', new_job_path %>
                     
                     <li><%= link_to 'Edit account', edit_user_registration_path %></li>
                     <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
