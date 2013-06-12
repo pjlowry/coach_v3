@@ -35,7 +35,10 @@ Coach::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'coachatlasv3.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'localhost:5000' }
+
+  Rails.application.routes.default_url_options[:host] = 'localhost:5000'
+
 
   # ActionMailer::Base.smtp_settings = {
   #   :port           => 587, 
