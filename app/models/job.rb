@@ -23,6 +23,10 @@ class Job < ActiveRecord::Base
     job.job_sport = job_sport.titleize
   end
 
+  before_validation do |job|
+    job.job_title = job_title.titleize
+  end
+
   geocoded_by :job_address
   after_validation :geocode, :if => :job_address_changed?
 

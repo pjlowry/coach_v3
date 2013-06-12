@@ -72,7 +72,7 @@
                 Sport - <%= job.job_sport %></a>
               </td>
               <td><%= job.job_city %>, <%= job.job_state %></td>
-              <td><%= job.created_at.localtime.strftime("%x") %></td>
+              <td>posted <%= time_ago_in_words(job.created_at) %> ago</td>
             </tr>
             <% end %>
           </tbody>
