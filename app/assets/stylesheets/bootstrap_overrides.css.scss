@@ -12,7 +12,14 @@
   max-width:150px;
   max-height:150px; 
 }
- 
+
+#profile-image img {
+  max-width: 60px;
+   vertical-align: middle;
+   border: 0;
+   -ms-interpolation-mode: bicubic;
+}
+
 
 #flash_notice,
 #flash_error,

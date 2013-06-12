@@ -52,7 +52,7 @@ class Profile < ActiveRecord::Base
   end
 
   def gmaps4rails_address
-    "#{profile.first_name}, #{profile.sport}, #{profile.picture}, #{profile.street}, #{profile.city}, #{profile.state}, #{profile.zip_code}"
+    address
   end
 
   # def self.list_sports

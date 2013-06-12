@@ -10,6 +10,8 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(params[:profile])
     if @profile.save
+      #SEND EMAIL
+      # UserMailer.welcome_email(current_user).deliver
       redirect_to profile_path(@profile.id)
       flash[:notice] = "Your profile has been created."
     else
@@ -44,8 +46,8 @@ class ProfilesController < ApplicationController
     @json = @profiles.to_gmaps4rails do |profile, marker|
      marker.infowindow render_to_string(:partial => "/profiles/infowindow", :locals => {:profile => profile})
        marker.title "Coach #{profile.first_name} #{profile.last_name[0]}" 
-       marker.picture({:picture => "/images/gmap-image.png", :width => 32,
-                    :height => 32})  
+       marker.picture({:picture => "/images/gmap-image.png", :width => 30,
+                    :height => 30})  
      end
   end
   
