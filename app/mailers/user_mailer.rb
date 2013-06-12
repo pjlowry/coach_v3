@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome_email(user)
     @user = user
-    @url  = "http://coachatlas.com/users/sign_in"
+    @url  = "http://coachatlasv3.herokuapp.com/users/sign_in"
     mail(:to => user.email, :subject => "Welcome to CoachAtlas")
   end
 end
