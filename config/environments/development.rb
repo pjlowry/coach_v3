@@ -35,18 +35,18 @@ Coach::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'localhost:5000' }
+  config.action_mailer.default_url_options = { :host => 'http://coachatlas.com' }
 
-  Rails.application.routes.default_url_options[:host] = 'localhost:5000'
+  Rails.application.routes.default_url_options[:host] = 'http://coachatlas.com'
 
 
-  # ActionMailer::Base.smtp_settings = {
-  #   :port           => 587, 
-  #   :address        => 'smtp.mailgun.org',
-  #   :user_name      => 'postmaster@coachatlas.mailgun.org',
-  #   :password       => ENV["MAILGUN_PASSWORD"],
-  #   :domain         => 'coachatlas.mailgun.org',
-  #   :authentication => :plain,
-  # }
-  # ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    :port           => 587, 
+    :address        => 'smtp.mailgun.org',
+    :user_name      => 'postmaster@coachatlas.mailgun.org',
+    :password       => ENV["MAILGUN_PASSWORD"],
+    :domain         => 'coachatlas.mailgun.org',
+    :authentication => :plain,
+  }
+  ActionMailer::Base.delivery_method = :smtp
 end
