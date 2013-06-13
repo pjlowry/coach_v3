@@ -51,12 +51,15 @@
       <div class="tab-pane" id="tab4">
         <ul class="unstyled">
           <h3>
-          <li>Facebook</h3><h4> 
+          <li><u>Facebook</u></h3><h4> 
             <a href="https://www.facebook.com/sharer/sharer.php?u=www.coachatlas.com/profiles/<%= @profile.id %>" target="_blank">
               Share on Facebook
-            </a>
+            </a></h4>
           </li><br>
-          <h3><li>Playing Experience:</h3><h4> <%= @profile.playing_experience %></li>
+          <h3><li><u>Twitter</u></h3><h4> <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://coachatlas.com/profiles/&lt;%= @profile.id %&gt;">Tweet</a><br>
+          Post profile on Twitter
+
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
           </h4> 
         </ul>
       </div>
