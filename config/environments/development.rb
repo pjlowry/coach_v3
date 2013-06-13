@@ -39,7 +39,9 @@ Coach::Application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'http://coachatlas.com'
 
-
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
   ActionMailer::Base.smtp_settings = {
     :port           => 587, 
     :address        => 'smtp.mailgun.org',
@@ -48,5 +50,4 @@ Coach::Application.configure do
     :domain         => 'coachatlas.mailgun.org',
     :authentication => :plain,
   }
-  ActionMailer::Base.delivery_method = :smtp
 end
