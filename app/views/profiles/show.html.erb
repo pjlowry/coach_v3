@@ -23,7 +23,7 @@
       <div class="tab-pane active" id="tab1">
         <ul class="unstyled">
           <h3>
-          <li>Coach: <%= @profile.first_name %> <%= @profile.last_name[0] %>.</li><br>
+          <br><li>Coach: <%= @profile.first_name %> <%= @profile.last_name[0] %>.</li><br>
           <li>Sport: <%= @profile.sport %></li><br>
           <li>Zip Code: <%= @profile.zip_code %></li><br>
           <li>Email: 
@@ -37,26 +37,25 @@
       <div class="tab-pane" id="tab2">
         <ul class="unstyled">
           <h3>
-          <li>Bio:</h3><h4> <%= @profile.bio %></li>
+          <br><li>Bio:</h3><h4> <%= @profile.bio %></li>
         </ul></h4>
       </div>
       <div class="tab-pane" id="tab3">
         <ul class="unstyled">
           <h3>
-          <li>Coaching Experience:</h3><h4> <%= @profile.coaching_experience %></li><br>
+          <br><li>Coaching Experience:</h3><h4> <%= @profile.coaching_experience %></li><br>
           <h3><li>Playing Experience:</h3><h4> <%= @profile.playing_experience %></li>
           </h4> 
         </ul>
       </div>
       <div class="tab-pane" id="tab4">
         <ul class="unstyled">
-          <h3>
-          <li><u>Facebook</u></h3><h4> 
+          <br><li><h4> 
             <a href="https://www.facebook.com/sharer/sharer.php?u=www.coachatlas.com/profiles/<%= @profile.id %>" target="_blank">
               <img src="/images/facebook.png" alt=""></a><br>Share this profile on Facebook
             </h4>
-          </li><br>
-          <h3><li><u>Twitter</u></h3><h4> 
+          </li>
+          <li><h4> 
           <a href="http://coachatlas.com/profiles/<%= @profile.id %>">
           <img src="/images/twitter.png" alt=""></a><br>Tweet this profile
           

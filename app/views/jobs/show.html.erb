@@ -13,12 +13,13 @@
     <ul class="nav nav-tabs">
       <li class="active"><a href="#tab1" data-toggle="tab">Contact Info</a></li>
       <li><a href="#tab2" data-toggle="tab">Job Description</a></li>
+      <li><a href="#tab3" data-toggle="tab">Social</a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="tab1">
         <ul class="unstyled">
           <h3>
-          <li>Posted On: <%= @job.updated_at.localtime.strftime("%x") %></li><br>
+          <br><li>Posted On: <%= @job.updated_at.localtime.strftime("%x") %></li><br>
           <li>Zip Code: <%= @job.job_zip_code %></li><br>
           <li>Contact's Email:
             <% if user_signed_in? %><%= mail_to @job.job_email, "Email me", :encode => "javascript", :subject => "Coachatlas job posting!" %>
@@ -31,7 +32,24 @@
       </div>
       <div class="tab-pane" id="tab2">
         <ul class="unstyled">
-          <li><h3>Job Description:</h3><h4> <%= @job.job_description %></li></h4>
+          <br><li><h3>Job Description:</h3><h4> <%= @job.job_description %></li></h4>
+        </ul>
+      </div>
+      <div class="tab-pane" id="tab3">
+        <ul class="unstyled">
+          <h3>
+          <br><li><u>Facebook</u></h3><h4> 
+            <a href="https://www.facebook.com/sharer/sharer.php?u=www.coachatlas.com/jobs/<%= @job.id %>" target="_blank">
+              <img src="/images/facebook.png" alt=""></a><br>Share this job on Facebook
+            </h4>
+          </li><br>
+          <h3><li><u>Twitter</u></h3><h4> 
+          <a href="http://coachatlas.com/jobs/<%= @job.id %>">
+          <img src="/images/twitter.png" alt=""></a><br>Tweet this job
+          
+
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+          </h4> 
         </ul>
       </div>
     </div>
