@@ -2,6 +2,7 @@
 ------------------------- */
 body {
     padding-top: 70px;
+
 }
 section {
     margin: 0;
@@ -9,6 +10,8 @@ section {
 }
 body.home header .container {
     background: none;
+
+
 }
 header .container {
     background: url(../images/dotted_hor.png) left bottom repeat-x;
@@ -774,7 +777,7 @@ ul.blog-data li:last-child:after {
 /* Footer
 ------------------------- */
 footer {
-    margin-top: -60px;
+    margin-top: 60px;
     background: url(../images/footer_bg.png) left top repeat;
     margin-bottom: 0px;
 }
