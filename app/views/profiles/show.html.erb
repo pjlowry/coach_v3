@@ -50,18 +50,16 @@
       </div>
       <div class="tab-pane" id="tab4">
         <ul class="unstyled">
+          <h4>Share This Profile:</h4>
           <br><li><h4> 
             <a href="https://www.facebook.com/sharer/sharer.php?u=www.coachatlas.com/profiles/<%= @profile.id %>" target="_blank">
-              <img src="/images/facebook.png" alt=""></a><br>Share this profile on Facebook
+              <img src="/images/fb.png" alt="Facebook" height="50px" width="50px"></a> 
             </h4>
           </li>
           <li><h4> 
-          <a href="http://coachatlas.com/profiles/<%= @profile.id %>">
-          <img src="/images/twitter.png" alt=""></a><br>Tweet this profile
-          
-
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
-          </h4> 
+            <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this CoachAtlas Coach Profile: www.coachatlas.com/profiles/<%= @profile.id %>" data-size="large" data-related="@coachatlas_com" data-count="none">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+          </li></h4> 
         </ul>
       </div>
     </div>
