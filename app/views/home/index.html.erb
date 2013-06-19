@@ -29,6 +29,7 @@
     </div>
   </div>
       <section class="mega-blockquote container">
+        <div class="span7 pull-left">
           <div class="mega-blockquote-title">CoachAtlas</div>
           <p class="mega-blockquote-text">The best place to find sports coaches for your team, player or organization</p>
                     <p>
@@ -37,16 +38,62 @@
                          <%= text_field_tag :query, params[:query], :placeholder => 'Enter sport ...', :autocomplete => 'on', :type => 'text', :class=> 'input-medium' %>
 
                        
-                         <%= text_field_tag :search, params[:search], :placeholder => 'Enter zip code ...', :autocomplete => 'on', :type => 'text', :class=> 'input-medium' %><br><br>
+                         <%= text_field_tag :search, params[:search], :placeholder => 'Enter zip code ...', :autocomplete => 'on', :type => 'text', :class=> 'input-medium' %>
 
-                         <%= submit_tag "Search", name: nil, :class => 'btn btn-primary' %>
+                         <%= submit_tag "Search", name: nil, :class => 'btn btn-small' %>
 
 
                       </p>
                         <% end %>
+        </div>
+        <div class="span4">
+          <img src="/images/player photo.jpg">
+        </div>                
       </section>
 
   <% end %>
 </div>
+
+<section class="latest-work">
+    <div class="container">
+    
+        <div class="divider divider10"><span>AS FEATURED IN</span></div>
+    
+        <div class="row">
+            <div class="span12">
+                <!-- custom buttons for mobile only -->
+                <div class="customBtns customBtns-phone visible-phone">
+                    <span class="arrowPrev2 jp-disabled"></span>
+                    <span class="arrowNext2"></span>
+                </div>
+            
+
+                <!-- item container -->
+                <ul id="ourclients" class="thumbnails" style="min-height: 158px;">
+                    <li class="span2" style="display: list-item; opacity: 1;">
+                        <img class="grayscale" alt="" src="images/client_logo_01.jpg">
+                    </li>
+                    <li class="span2" style="display: list-item; opacity: 1;">
+                        <img class="grayscale" alt="" src="images/client_logo_02.jpg">
+                    </li>
+                    <li class="span2" style="display: list-item; opacity: 1;">
+                        <img class="grayscale" alt="" src="images/client_logo_03.jpg">
+                    </li>
+                    <li class="span2" style="display: list-item; opacity: 1;">
+                        <img class="grayscale" alt="" src="images/client_logo_04.jpg">
+                    </li>
+                    <li class="span2" style="display: list-item; opacity: 1;">
+                        <img class="grayscale" alt="" src="images/client_logo_05.jpg">
+                    </li>
+                    <li class="span2" style="display: list-item; opacity: 1;">
+                        <img class="grayscale" alt="" src="images/client_logo_06.jpg">
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div id="pre-footer">
 </div>
