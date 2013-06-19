@@ -8,7 +8,7 @@ Coach::Application.routes.draw do
   resources :jobs
   resources :camps
 
-  %w[about howitworks howitworks_players howitworks_coaches blog].each do |page|
+  %w[about howitworks howitworks_players howitworks_coaches blog terms privacy].each do |page|
    get page, controller: 'info', action: page
      end
 
