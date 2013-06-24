@@ -10,8 +10,25 @@ class ProfilesController < ApplicationController
   def create
     @profile = current_user.build_profile(params[:profile])
     if @profile.save
-      #SEND EMAIL
-      # UserMailer.welcome_email(current_user).deliver
+      @profile = Faraday.post do |request|
+        request.url "https://api:key-3uwo2l351uy1ya54t0kucv69n430v859@api.mailgun.net/v2/coachatlas.mailgun.org/messages"
+        request.headers['Content-Type'] = "application/x-www-form-urlencoded"
+        request.headers['Authorization'] = "Basic " + Base64.strict_encode64("api:key-3uwo2l351uy1ya54t0kucv69n430v859")
+        request.body = URI.encode_www_form({ 
+                      :from => "support@coachatlas.com",
+                      :to => @profile.contact_email,
+                      :subject => "Welcome to CoachAtlas",
+                      :text => "Welcome to CoachAtlas.com, <%= @profile.first_name %>
+                                ===============================================
+                                 
+                                You have successfully signed up to CoachAtlas.com.
+                                 
+                                To view your profile, just visit coachatlas.com/profiles/<%= @profile.id %>
+                                 
+                                Thanks for joining, we hope you enjoy CoachAtlas!
+                                -Team CoachAtlas"})
+      end
+
       redirect_to profile_path(@profile.id)
       flash[:notice] = "Your profile has been created."
     else

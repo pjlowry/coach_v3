@@ -36,7 +36,7 @@ class JobsController < ApplicationController
       @jobs = Job.sorted(params[:sort], "created_at DESC").page(params[:page])
     end
     if @jobs.count == 0
-      flash[:alert] = "Sorry we couldn't find any jobs that fit that description"
+      flash[:alert] = "Sorry we could not find any jobs for you."
       @jobs = Job.sorted(params[:sort], "created_at DESC").page(params[:page])
     end
   end

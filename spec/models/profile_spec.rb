@@ -14,7 +14,6 @@ describe Profile do
     it {should validate_presence_of :zip_code}
     it {should validate_presence_of :state}
     it {should validate_presence_of :bio}
-    it {should validate_presence_of :gender}
     it {should validate_presence_of :sport}
     it {should validate_presence_of :contact_email}
     it {should validate_presence_of :coaching_experience}
