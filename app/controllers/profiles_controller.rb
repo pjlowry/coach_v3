@@ -18,15 +18,15 @@ class ProfilesController < ApplicationController
                       :from => "support@coachatlas.com",
                       :to => @profile.contact_email,
                       :subject => "Welcome to CoachAtlas",
-                      :text => "Welcome to CoachAtlas.com, <%= @profile.first_name %>
-                                ===============================================
+                      :text => "Welcome to CoachAtlas.com, #{@profile.first_name}
+===============================================
                                  
-                                You have successfully signed up to CoachAtlas.com.
-                                 
-                                To view your profile, just visit coachatlas.com/profiles/<%= @profile.id %>
-                                 
-                                Thanks for joining, we hope you enjoy CoachAtlas!
-                                -Team CoachAtlas"})
+You have successfully signed up to CoachAtlas.com.
+
+To view your profile, just visit coachatlas.com/profiles/#{@profile.id}
+
+Thanks for joining, we hope you enjoy CoachAtlas!
+-Team CoachAtlas"})
       end
 
       redirect_to profile_path(@profile.id)
