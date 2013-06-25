@@ -66,16 +66,19 @@ Coach::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
 
-  # Rails.application.routes.default_url_options[:host] = 'http://coachatlas.com'
+  config.action_mailer.default_url_options = { :host => 'http://coachatlas.com' }
 
+  Rails.application.routes.default_url_options[:host] = 'http://coachatlas.com'
 
-  # ActionMailer::Base.smtp_settings = {
-  #   :port           => 587, 
-  #   :address        => 'smtp.mailgun.org',
-  #   :user_name      => 'postmaster@coachatlas.mailgun.org',
-  #   :password       => ENV["MAILGUN_PASSWORD"],
-  #   :domain         => 'coachatlas.mailgun.org',
-  #   :authentication => :plain,
-  # }
-  # ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+    :port           => 587, 
+    :address        => 'smtp.mailgun.org',
+    :user_name      => 'postmaster@coachatlas.mailgun.org',
+    :password       => ENV["MAILGUN_PASSWORD"],
+    :domain         => 'coachatlas.mailgun.org',
+    :authentication => :plain,
+  }
 end
