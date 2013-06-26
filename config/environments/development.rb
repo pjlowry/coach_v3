@@ -45,8 +45,8 @@ Coach::Application.configure do
   ActionMailer::Base.smtp_settings = {
     :port           => 587, 
     :address        => 'smtp.mailgun.org',
-    :user_name      => 'postmaster@coachatlas.mailgun.org',
-    :password       => ENV["MAILGUN_PASSWORD"],
+    :user_name      => 'support@coachatlas.com',
+    :password       => '0pqorysb91s7',
     :domain         => 'coachatlas.mailgun.org',
     :authentication => :plain,
   }

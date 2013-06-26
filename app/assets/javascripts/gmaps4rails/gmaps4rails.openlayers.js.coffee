@@ -184,7 +184,7 @@ class @Gmaps4RailsOpenlayers extends Gmaps4Rails
     feature = evt.feature    
     popup = new OpenLayers.Popup.FramedCloud("featurePopup",
                                feature.geometry.getBounds().getCenterLonLat(),
-                               new OpenLayers.Size(300,200),
+                               new OpenLayers.Size(300,250),
                                feature.infoWindow,
                                null, true, @onPopupClose)
     feature.popup = popup
