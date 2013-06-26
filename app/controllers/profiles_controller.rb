@@ -54,15 +54,14 @@ Thanks for joining, we hope you enjoy CoachAtlas!
       @profiles = Profile.sorted(params[:sort], "created_at DESC").page(params[:page]) 
     end
     if @profiles.count == 0
-      flash[:alert] = "Sorry we couldn't find any coaches for you."
+      flash.now[:alert] = "Sorry we couldn't find any coaches for you."
       @profiles = Profile.sorted(params[:sort], "created_at DESC").page(params[:page])
-
     end
     @json = @profiles.to_gmaps4rails do |profile, marker|
      marker.infowindow render_to_string(:partial => "/profiles/infowindow", :locals => {:profile => profile})
        marker.title "Coach #{profile.first_name} #{profile.last_name[0]}" 
        marker.picture({:picture => "/images/gmap-image.png", :width => 30,
-                    :height => 30})  
+                    :height => 35})  
      end
   end
   
