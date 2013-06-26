@@ -4,19 +4,25 @@
 </div><br><br>
 <div class="row">
 <div class="span3 pull-left">
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=11&markers=#{@job.latitude}%2C#{@job.longitude}" %><br>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=11&markers=#{@job.latitude}%2C#{@job.longitude}" %><br><br>
   <h3 style="text-align:center;">Location: <%= @job.job_city %>, <%= @job.job_state %></h3><br>
 </div>
 
 <div class="span9">
   <div class="tabbable">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab">Contact Info</a></li>
-      <li><a href="#tab2" data-toggle="tab">Job Description</a></li>
+      <li class="active"><a href="#tab1" data-toggle="tab">Job Description</a></li>
+      <li><a href="#tab2" data-toggle="tab">Contact Info</a></li>
       <li><a href="#tab3" data-toggle="tab">Social</a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="tab1">
+        <ul class="unstyled">
+          <h3><br><li>Posted On: <%= @job.updated_at.localtime.strftime("%x") %></li><br>
+          <br><li>Job Description:</h3><h4> <%= @job.job_description %></li></h4>
+        </ul>
+      </div>
+      <div class="tab-pane" id="tab2">
         <ul class="unstyled">
           <h3>
           <br><li>Posted On: <%= @job.updated_at.localtime.strftime("%x") %></li><br>
@@ -26,29 +32,23 @@
             <% else %>
               <%= link_to "Sign in to get contact information", root_path %>
             <% end %></li><br>
-          <li>Gender Preferred: <%= @job.job_gender %></li>
         </h3>
-        </ul>
-      </div>
-      <div class="tab-pane" id="tab2">
-        <ul class="unstyled">
-          <br><li><h3>Job Description:</h3><h4> <%= @job.job_description %></li></h4>
         </ul>
       </div>
       <div class="tab-pane" id="tab3">
         <ul class="unstyled">
-          <h3>
-          <br><li><u>Facebook</u></h3><h4> 
+          <h4>Share This Profile:</h4>
+          <br>
+          <li><h4> 
             <a href="https://www.facebook.com/sharer/sharer.php?u=www.coachatlas.com/jobs/<%= @job.id %>" target="_blank">
-              <img src="/images/facebook.png" alt=""></a><br>Share this job on Facebook
+              <img src="/images/share.jpg" alt="Facebook" height="30px" width="75px"></a> 
             </h4>
-          </li><br>
-          <h3><li><u>Twitter</u></h3><h4> 
-          <a href="http://coachatlas.com/jobs/<%= @job.id %>">
-          <img src="/images/twitter.png" alt=""></a><br>Tweet this job
-          
-
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+          </li>
+          <li><h4> 
+          <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this CoachAtlas Job: " data-size="large" data-related="@coachatlas_com" data-count="none">Tweet</a>
+                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                       </li>
+                     </a>
           </h4> 
         </ul>
       </div>
