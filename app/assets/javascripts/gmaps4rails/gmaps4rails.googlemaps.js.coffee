@@ -75,7 +75,7 @@ class @Gmaps4RailsGoogle extends Gmaps4Rails
 
   createMap : ->
     defaultOptions =
-      maxZoom:                13
+      maxZoom:                11
       minZoom:                @map_options.minZoom
       zoom:                   @map_options.zoom
       center:                 @createLatLng(@map_options.center_latitude, @map_options.center_longitude)

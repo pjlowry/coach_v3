@@ -1,76 +1,80 @@
+
+<br>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              profiles_path %>
+<br><br>
+
 <%- model_class = Profile -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => "Coach #{@profile.first_name}'s Profile" %> - <%= @profile.sport %></h1>
-</div><br><br>
 
-<div class="row">
-  <div class="span2 pull-left">
-    <%= image_tag @profile.picture_url %><br>
-    <h4 style="text-align:center;">Member Since: <%= @profile.created_at.localtime.strftime("%x")%></h4 style="text-align:center;"><br>
+<div class="container" style="padding:30px;">
+  <div class="row">
+    <div class="span2 pull-left"><br><br>
+      <%= image_tag @profile.picture_url %><br>
+    </div>
 
-  </div>
-  
-
-<div class="span7 pull-left">
-  <div class="tabbable">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab">Contact Info</a></li>
-      <li><a href="#tab2" data-toggle="tab">Bio</a></li>
-      <li><a href="#tab3" data-toggle="tab">Experience</a></li>
-      <li><a href="#tab4" data-toggle="tab">Social</a></li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane active" id="tab1">
-        <ul class="unstyled">
-          <h3>
-          <br><li>Coach: <%= @profile.first_name %> <%= @profile.last_name[0] %>.</li><br>
-          <li>Sport: <%= @profile.sport %></li><br>
-          <li>Zip Code: <%= @profile.zip_code %></li><br>
-          <li>Email: 
-            <% if user_signed_in? %><%= mail_to @profile.contact_email, "Email me", :encode => "hex", :subject => "Coachatlas contact request!" %><br>
-            <% else %>
-            <%= link_to "Sign in to get contact information", new_user_session_path %><br>
-            <% end %>
-          </h3>
-        </ul>
+    <div class="span6 pull-left">
+      <div class="page-header">
+        <h1><%=t '.title', :default => "Coach #{@profile.first_name} #{@profile.last_name[0]}." %></h1><br><br>
       </div>
-      <div class="tab-pane" id="tab2">
-        <ul class="unstyled">
-          <h3>
-          <br><li>Bio:</h3><h4> <%= @profile.bio %></li>
-        </ul></h4>
-      </div>
-      <div class="tab-pane" id="tab3">
-        <ul class="unstyled">
-          <h3>
-          <br><li>Coaching Experience:</h3><h4> <%= @profile.coaching_experience %></li><br>
-          <h3><li>Playing Experience:</h3><h4> <%= @profile.playing_experience %></li>
-          </h4> 
+        
+         <h3><%= @profile.sport %> | <%= @profile.city %>, <%= @profile.state %></h3>
+       
+      <br><br>
+      <div class="tabbable">
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#tab1" data-toggle="tab">Experience</a></li>
+          <li><a href="#tab2" data-toggle="tab">Photos</a></li>
+          <li><a href="#tab3" data-toggle="tab">Contact Info</a></li>
+          <li><a href="#tab4" data-toggle="tab">Social</a></li>
         </ul>
-      </div>
-      <div class="tab-pane" id="tab4">
-        <ul class="unstyled">
-          <h4>Share This Profile:</h4>
-          <br><li> 
-            <a href="https://www.facebook.com/sharer/sharer.php?u=www.coachatlas.com/profiles/<%= @profile.id %>" target="_blank">
-              <img src="/images/share.jpg" alt="Facebook" height="30px" width="75px"></a> 
-            
-          </li><br>
-          <li><h4> 
-            <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this CoachAtlas Coach Profile: " data-size="large" data-related="@coachatlas_com" data-count="none">Tweet</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
-          </li></h4> 
-        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="tab1">
+            <ul class="unstyled">
+              <h3>
+              <br><li>Coaching Experience:</h3><h4> <%= @profile.coaching_experience %></li><br>
+              <h3><li>Playing Experience:</h3><h4> <%= @profile.playing_experience %></li>
+              </h4> 
+            </ul>
+          </div>
+          <div class="tab-pane" id="tab2">
+            <ul class="unstyled">
+              <%= image_tag @profile.picture_url %>
+            </ul>
+          </div>
+          <div class="tab-pane" id="tab3">
+            <ul class="unstyled">
+              <h3>
+              
+              <li>Email: 
+                <% if user_signed_in? %><%= mail_to @profile.contact_email, "Email me", :encode => "hex", :subject => "Coachatlas contact request!" %><br>
+                <% else %>
+                <%= link_to "Sign in to get contact information", new_user_session_path %><br>
+                <% end %><br>
+                <li>Member Since: <%= @profile.created_at.localtime.strftime("%x")%></li><br>
+              </h3>
+            </ul>
+          </div>
+          <div class="tab-pane" id="tab4">
+            <ul class="unstyled">
+              <h4>Share This Profile:</h4>
+              <br><li> 
+                <a href="https://www.facebook.com/sharer/sharer.php?u=www.coachatlas.com/profiles/<%= @profile.id %>" target="_blank">
+                  <img src="/images/share.jpg" alt="Facebook" height="30px" width="75px"></a> 
+                
+              </li><br>
+              <li><h4> 
+                <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this CoachAtlas Coach Profile: " data-size="large" data-related="@coachatlas_com" data-count="none">Tweet</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script> 
+              </li></h4> 
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="span3 pull-left"><br><br>
+      <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=11&center=#{@profile.city},#{@profile.state}&&markers=color:red%7Clabel:%7C#{@profile.latitude},#{@profile.longitude}" %><br>
+    </div>
 </div>
-
-<div class="span3 pull-right">
-  <h3>Location: <%= @profile.city %>, <%= @profile.state %></h3>
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=11&center=#{@profile.city},#{@profile.state}&&markers=color:red%7Clabel:%7C#{@profile.latitude},#{@profile.longitude}" %><br>
-</div>
-
 
 
 
