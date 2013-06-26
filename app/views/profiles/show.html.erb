@@ -8,8 +8,10 @@
 
 <div class="container" style="padding:30px;">
   <div class="row">
+    <div id="profile-show">
     <div class="span2 pull-left"><br><br>
       <%= image_tag @profile.picture_url %><br>
+    </div>
     </div>
 
     <div class="span6 pull-left">
@@ -18,7 +20,7 @@
       </div>
         
          <h3><%= @profile.sport %> | <%= @profile.city %>, <%= @profile.state %></h3>
-         <h5><%= @profile.bio[0..150] %> ...</h5>
+         <h5><%= @profile.bio[0..200] %> </h5>
        
       <br><br>
       <div class="tabbable">
@@ -76,25 +78,24 @@
       <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=11&center=#{@profile.city},#{@profile.state}&&markers=color:red%7Clabel:%7C#{@profile.latitude},#{@profile.longitude}" %><br>
     </div>
 </div>
-
-
-
 </div><br>
 <div class="divider divider10"></div>
-<div class="span10 pull-left">
-  <h2>Similar coaches</h2>
-    <% for profile in @profile.nearbys.first(3) %>
-    <% if profile.nil? %>
-    <h3>Sorry we couldn't find any coaches nearby</h3>
-    <% else %>
-    <div class="span2">
-      <a href='/profiles/<%= profile.id %>'>
-      <%= image_tag profile.picture.url %><br>
-      <%= link_to "Coach: #{profile.first_name}", profile %><br></a> (<%= profile.distance.to_f.round(2) %> miles away) <br>
-      Sport: <%= profile.sport %>
-    </div><br>
-    <% end %>  
-    <% end %>
+<div id="profile-show">
+  <div class="span10 pull-left">
+    <h2>Similar coaches</h2>
+      <% for profile in @profile.nearbys.first(3) %>
+      <% if profile.nil? %>
+      <h3>Sorry we couldn't find any coaches nearby</h3>
+      <% else %>
+      <div class="span2">
+        <a href='/profiles/<%= profile.id %>'>
+        <%= image_tag profile.picture.url %><br>
+        <%= link_to "Coach: #{profile.first_name}", profile %><br></a> (<%= profile.distance.to_f.round(2) %> miles away) <br>
+        Sport: <%= profile.sport %>
+      </div><br>
+      <% end %>  
+      <% end %>
+  </div>
 </div>
 </div>
 <div id="pre-footer">
