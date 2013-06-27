@@ -12,6 +12,8 @@ gem 'cancan'
 gem 'pg_search'
 gem 'geocoder'
 gem 'carrierwave'
+gem 'carrierwave_direct'
+gem 'sidekiq'
 gem "mini_magick"
 gem "fog"
 gem 'foreman'
