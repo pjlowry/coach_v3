@@ -1,9 +1,9 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     provider: "AWS",
-    aws_access_key_id: ENV["AWS_ACCESS_KEY_ID"],
-    aws_secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
+    aws_access_key_id: "AKIAJ3ORFA54CEADRMLQ",
+    aws_secret_access_key: "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"
   }
-  config.fog_directory = ENV["AWS_S3_BUCKET"]
+  config.fog_directory = "coachatlas-profile-pictures"
   config.fog_public = true
 end

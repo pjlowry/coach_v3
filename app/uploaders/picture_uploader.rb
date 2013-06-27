@@ -32,9 +32,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     "/images/coach.jpg"
   end
 
-  def cache_dir
-  "#{Rails.root}/tmp/uploads"
-  end
+
 
 
 
