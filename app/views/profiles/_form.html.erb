@@ -2,17 +2,20 @@
   <div class="container"><br><br>
     <div class="control-group">
     <%= f.label :first_name, 'First name:', :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.text_field :first_name, :class => 'text_field' %>
     </div>
   </div><div class="control-group">
     <%= f.label :last_name, 'Last name:', :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.text_field :last_name, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :sport, 'Enter the sport you coach:', :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.text_field :sport, :class => 'text_field' %>
     </div>
@@ -25,24 +28,28 @@
   </div>
  <div class="control-group">
     <%= f.label "Street Address", "Address, street and unit #? Don't worry we will keep this private!", :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.text_field :street, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
      <%= f.label :city, "City:", :class => 'control-label' %>
+     <p><em>*required</em></p>
      <div class="controls">
        <%= f.text_field :city, :class => 'text_field' %>
      </div>
    </div>
    <div class="control-group">
     <%= f.label :state, "State:", :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.collection_select(:state, Profile::STATE, :to_s, :to_s, :include_blank => false) %>
     </div>
   </div>
   <div class="control-group">
       <%= f.label :zip_code, 'Zip Code:', :class => 'control-label' %>
+      <p><em>*required</em></p>
       <div class="controls">
         <%= f.text_field :zip_code, :class => 'text_field' %>
       </div>
@@ -55,20 +62,21 @@
       </div>
   <div class="control-group">
     <%= f.label :bio, 'Describe yourself in one sentance (ie Former All-American soccer goalie who specializes in goalkeeper training.)', :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.text_area :bio, :class => "largearea" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :coaching_experience, 'Tell us a little about your background coaching your sport:', :class => 'control-label' %>
-    <p><em>Include licenses, accolades, previous jobs or any other skills you can provide.</em></p>
+    <p><em>Include licenses, accolades, previous jobs or any other skills you can provide. *required</em></p>
     <div class="controls">
       <%= f.text_area :coaching_experience, :class => "largearea" %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :playing_experience, 'Tell us a little about your background playing your sport:', :class => 'control-label' %>
-    <p><em>Include accolades, experiences, teams, awards and achievements.</em></p>
+    <p><em>Include accolades, experiences, teams, awards and achievements. *required</em></p>
     <div class="controls">
       <%= f.text_area :playing_experience, :class => "largearea" %>
     </div>

@@ -2,13 +2,14 @@
   <div class="container"><br><br>
     <div class="control-group">
     <%= f.label :job_title, 'Title:', :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.text_field :job_title, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :job_description, 'Description:', :class => 'control-label' %>
-    <p><em>Describe what you are looking for in a coach and as much detail about the role as you can. The more detail the better your chances are of finding a great match!</em></p>
+    <p><em>Describe what you are looking for in a coach and as much detail about the role as you can. The more detail the better your chances are of finding a great match! *required</em></p>
     <div class="controls">
       <%= f.text_area :job_description, :class => "largearea" %>
     </div>
@@ -22,6 +23,7 @@
   </div>
   <div class="control-group">
     <%= f.label :job_sport, 'Please enter the sport:', :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.text_field :job_sport, :class => 'text_field' %>
     </div>
@@ -34,24 +36,28 @@
   </div>
   <div class="control-group">
      <%= f.label :job_city, "City:", :class => 'control-label' %>
+     <p><em>*required</em></p>
      <div class="controls">
        <%= f.text_field :job_city, :class => 'text_field' %>
      </div>
    </div>
    <div class="control-group">
     <%= f.label :job_state, "State:", :class => 'control-label' %>
+    <p><em>*required</em></p>
     <div class="controls">
       <%= f.collection_select(:job_state, Job::STATE, :to_s, :to_s, :include_blank => false) %>
     </div>
   </div>
   <div class="control-group">
       <%= f.label :job_zip_code, 'Zip Code:', :class => 'control-label' %>
+      <p><em>*required</em></p>
       <div class="controls">
         <%= f.text_field :job_zip_code, :class => 'text_field' %>
       </div>
     </div>
     <div class="control-group">
         <%= f.label :job_email, 'Your Contact Email:', :class => 'control-label' %>
+        <p><em>*required</em></p>
         <div class="controls">
           <%= f.text_field :job_email, :class => 'text_field' %>
         </div>
