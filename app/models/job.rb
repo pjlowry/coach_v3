@@ -2,7 +2,7 @@ class Job < ActiveRecord::Base
   include PgSearch
 
   validates :job_title, :job_sport, :job_city, :job_state, :job_zip_code, :job_description, :job_email, :user_id, :presence => true
-  attr_accessible :job_title, :job_sport, :job_distance_search, :job_gender, :job_city, :job_state, :job_zip_code, :job_description, :job_email, :user_id, :job_address, :latitude, :longitude
+  attr_accessible :job_title, :job_qualifications, :job_sport, :job_distance_search, :job_gender, :job_city, :job_state, :job_zip_code, :job_description, :job_email, :user_id, :job_address, :latitude, :longitude
 
   GENDER = ["Male", "Female", "Male or Female"]
   STATE = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA",

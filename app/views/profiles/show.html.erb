@@ -80,7 +80,7 @@
 </div>
 </div><br>
 <div class="divider divider10"></div>
-<div id="profile-show">
+<div id="profile-preview">
   <div class="span10 pull-left">
     <h2>Similar coaches</h2>
       <% for profile in @profile.nearbys.first(3) %>
@@ -89,7 +89,8 @@
       <% else %>
       <div class="span2">
         <a href='/profiles/<%= profile.id %>'>
-        <%= image_tag profile.picture.url %><br>
+          <div id="profile-large">
+        <%= image_tag profile.picture.url %><br></div>
         <%= link_to "Coach: #{profile.first_name}", profile %><br></a> (<%= profile.distance.to_f.round(2) %> miles away) <br>
         Sport: <%= profile.sport %>
       </div><br>

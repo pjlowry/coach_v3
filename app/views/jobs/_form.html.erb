@@ -5,11 +5,19 @@
     <div class="controls">
       <%= f.text_field :job_title, :class => 'text_field' %>
     </div>
-  </div><div class="control-group">
+  </div>
+  <div class="control-group">
     <%= f.label :job_description, 'Description:', :class => 'control-label' %>
     <p><em>Describe what you are looking for in a coach and as much detail about the role as you can. The more detail the better your chances are of finding a great match!</em></p>
     <div class="controls">
       <%= f.text_area :job_description, :class => "largearea" %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :job_qualifications, 'Job Qualifications:', :class => 'control-label' %>
+    <p><em>Describe what qualities you are looking for in a coach.</em></p>
+    <div class="controls">
+      <%= f.text_area :job_qualifications, :class => "largearea" %>
     </div>
   </div>
   <div class="control-group">

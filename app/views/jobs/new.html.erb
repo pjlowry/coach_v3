@@ -13,6 +13,13 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.label :job_qualifications, 'Job Qualifications:', :class => 'control-label' %>
+    <p><em>Describe what qualities you are looking for in a coach.</em></p>
+    <div class="controls">
+      <%= f.text_area :job_qualifications, :class => "largearea" %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :job_sport, 'Please enter the sport:', :class => 'control-label' %>
     <div class="controls">
       <%= f.text_field :job_sport, :class => 'text_field' %>

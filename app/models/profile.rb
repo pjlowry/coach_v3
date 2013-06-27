@@ -27,8 +27,6 @@ class Profile < ActiveRecord::Base
 
   before_validation do |profile|
     profile.sport = sport.titleize
-    profile.first_name = first_name.titleize
-    profile.last_name = last_name.titleize
     profile.city = city.titleize
   end
   # before_save :titlecase

@@ -18,6 +18,15 @@
   padding:5px;
 }
 
+#profile-preview img {
+  max-width: 125px;
+  max-height: 125px;
+}
+
+#profile-large img{
+  max-width:300px;
+  max-height:300px;
+}
 
 
 #map img { 

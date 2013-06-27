@@ -21,6 +21,7 @@ describe Job do
      it {should allow_mass_assignment_of :job_zip_code}
      it {should allow_mass_assignment_of :job_title}
      it {should allow_mass_assignment_of :job_description}
+     it {should allow_mass_assignment_of :job_qualifications}
      it {should allow_mass_assignment_of :job_state}
      it {should allow_mass_assignment_of :job_city}
      it {should allow_mass_assignment_of :job_email}  

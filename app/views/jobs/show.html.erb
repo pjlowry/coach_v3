@@ -13,13 +13,15 @@
     <ul class="nav nav-tabs">
       <li class="active"><a href="#tab1" data-toggle="tab">Job Description</a></li>
       <li><a href="#tab2" data-toggle="tab">Contact Info</a></li>
-      <li><a href="#tab3" data-toggle="tab">Social</a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="tab1">
         <ul class="unstyled">
-          <h3><br><li>Posted On: <%= @job.updated_at.localtime.strftime("%x") %></li><br>
+
+          <h3><br>
+            <li>Sport: <%= @job.job_sport %></li>
           <br><li>Job Description:</h3><h4> <%= @job.job_description %></li></h4>
+          <br><li><h3>Job Qualifications:</h3><h4> <%= @job.job_qualifications %></li></h4>
         </ul>
       </div>
       <div class="tab-pane" id="tab2">
@@ -33,23 +35,6 @@
               <%= link_to "Sign in to get contact information", root_path %>
             <% end %></li><br>
         </h3>
-        </ul>
-      </div>
-      <div class="tab-pane" id="tab3">
-        <ul class="unstyled">
-          <h4>Share This Profile:</h4>
-          <br>
-          <li><h4> 
-            <a href="https://www.facebook.com/sharer/sharer.php?u=www.coachatlas.com/jobs/<%= @job.id %>" target="_blank">
-              <img src="/images/share.jpg" alt="Facebook" height="30px" width="75px"></a> 
-            </h4>
-          </li>
-          <li><h4> 
-          <a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out this CoachAtlas Job: " data-size="large" data-related="@coachatlas_com" data-count="none">Tweet</a>
-                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                       </li>
-                     </a>
-          </h4> 
         </ul>
       </div>
     </div>
